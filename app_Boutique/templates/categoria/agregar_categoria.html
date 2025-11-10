@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Agregar Categoría{% endblock %}
+{% block content %}
+<div class="card p-4 card-soft">
+  <h4>Agregar Categoría</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" name="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" name="descripcion"></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo</label>
+      <input class="form-control" name="tipo">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Slug</label>
+      <input class="form-control" name="slug">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" name="activo" checked>
+      <label class="form-check-label">Activo</label>
+    </div>
+    <button class="btn btn-primary">Guardar</button>
+    <a href="{% url 'ver_categorias' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

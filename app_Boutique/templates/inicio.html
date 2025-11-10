@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Inicio - Boutique{% endblock %}
+{% block content %}
+
+<div class="row">
+  <!-- Columna izquierda -->
+  <div class="col-md-8">
+    <div class="card card-soft p-3 mb-4">
+      <h4>Bienvenido al Sistema de Administración Boutique</h4>
+      <p>
+        Administra las <strong>categorías</strong>, <strong>productos</strong> y <strong>proveedores</strong> de tu boutique.
+        Consulta la información general del sistema a continuación:
+      </p>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Total de Categorías: <strong>{{ total_categorias }}</strong>
+        </li>
+        <li class="list-group-item">
+          Total de Productos: <strong>{{ total_productos }}</strong>
+        </li>
+        <li class="list-group-item">
+          Total de Proveedores: <strong>{{ total_proveedores }}</strong>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Imagen decorativa -->
+    <div class="mt-3">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3"
+           alt="Boutique"
+           class="img-fluid rounded shadow-sm">
+    </div>
+  </div>
+
+  <!-- Columna derecha -->
+  <div class="col-md-4">
+    <div class="card card-soft p-3 mb-4">
+      <h5>Últimas Categorías</h5>
+      <ul class="list-group">
+        {% for c in categorias %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ c.nombre }}
+            <small class="text-muted">{{ c.tipo }}</small>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No hay categorías registradas.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="card card-soft p-3 mb-4">
+      <h5>Últimos Productos</h5>
+      <ul class="list-group">
+        {% for p in productos %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ p.nombre }}
+            <small class="text-muted">${{ p.precio }}</small>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No hay productos registrados.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="card card-soft p-3">
+      <h5>Últimos Proveedores</h5>
+      <ul class="list-group">
+        {% for pr in proveedores %}
+          <li class="list-group-item">
+            {{ pr.nombre }}<br>
+            <small class="text-muted">{{ pr.email }}</small>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No hay proveedores registrados.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
